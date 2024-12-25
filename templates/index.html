@@ -9,68 +9,150 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #1d2671, #c33764);
-            color: white;
-            min-height: 100vh;
+            background: linear-gradient(to right, #f7e6d4, #fff8e1);
+            color: #333;
+            margin: 0;
+            padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 600px;
         }
         h1 {
             font-weight: 700;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #555;
         }
         .btn-primary {
-            background: #ff7b54;
+            background: #007bff;
             border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background 0.3s ease;
         }
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            background: #0056b3;
         }
-        ul {
-            list-style: none;
+        .status-message {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .loader {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress {
+            margin-top: 20px;
+            height: 20px;
+        }
+        .file-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .file-list ul {
+            list-style-type: none;
             padding: 0;
         }
-        ul li {
-            padding: 10px 0;
+        .file-list ul li {
+            margin: 5px 0;
+            color: #007bff;
+            cursor: pointer;
         }
-        ul li:before {
-            content: '\2022';
-            color: #ff7b54;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+        .file-list ul li:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container">
         <h1>🚀 Job Scraper</h1>
         <p>Discover and save job postings with a single click.</p>
 
-        <a href="/scrape" class="btn btn-primary btn-lg mt-3">Scrape Jobs</a>
+        <button id="scrape-btn" class="btn btn-primary btn-lg">Scrape Jobs</button>
+        <div id="loader" class="loader"></div>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div id="status" class="status-message"></div>
 
-        <div class="mt-5">
-            <h2>📋 Instructions</h2>
-            <ul>
-                <li>Click on <strong>Scrape Jobs</strong> to gather job postings.</li>
-                <li>The data will be automatically saved in a CSV file.</li>
-                <li>Find the <code>jobs.csv</code> file in your project folder.</li>
+        <div class="file-list">
+            <h4>Available Files:</h4>
+            <ul id="file-list">
+                <!-- File names will be dynamically loaded here -->
             </ul>
+            <button id="refresh-files" class="btn btn-secondary btn-sm">Refresh File List</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateProgressBar(value) {
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = value + '%';
+            progressBar.setAttribute('aria-valuenow', value);
+        }
+
+        function fetchFiles() {
+            fetch('/files')
+                .then(response => response.json())
+                .then(files => {
+                    const fileList = document.getElementById('file-list');
+                    fileList.innerHTML = '';
+                    files.forEach(file => {
+                        const li = document.createElement('li');
+                        li.textContent = file;
+                        fileList.appendChild(li);
+                    });
+                })
+                .catch(err => console.error('Error fetching files:', err));
+        }
+
+        document.getElementById('scrape-btn').addEventListener('click', function () {
+            const status = document.getElementById('status');
+            const loader = document.getElementById('loader');
+            status.textContent = "Scraping jobs... Please wait.";
+            loader.style.display = "block";
+            updateProgressBar(0);
+
+            fetch('/scrape')
+                .then(response => {
+                    if (response.ok) {
+                        status.textContent = "Jobs scraped successfully! Check the 'jobs.csv' file.";
+                        updateProgressBar(100);
+                        fetchFiles(); // Refresh file list
+                    } else {
+                        status.textContent = "Error: Could not scrape jobs.";
+                    }
+                })
+                .catch(() => {
+                    status.textContent = "Error: Could not connect to the server.";
+                })
+                .finally(() => {
+                    loader.style.display = "none";
+                });
+        });
+
+        document.getElementById('refresh-files').addEventListener('click', fetchFiles);
+
+        // Initial file list fetch
+        fetchFiles();
+    </script>
 </body>
 </html>
