@@ -1,10 +1,13 @@
 from flask import Flask, render_template, redirect, url_for, jsonify
+from flask_socketio import SocketIO, emit
 import requests
 from bs4 import BeautifulSoup
 import csv
 import os
+import time
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 # Ordner für die Speicherung der CSV-Dateien
 DATA_FOLDER = "data"
@@ -23,16 +26,25 @@ def get_page_content(url):
     return response.text
 
 # Funktion zum Scrapen der Jobdaten
-def scrape_jobs(base_url, max_pages=10):
+def scrape_jobs(base_url, max_pages=100):
     jobs = []
 
     for page in range(1, max_pages + 1):
         url = base_url.format(page=page)
-        html_content = get_page_content(url)
+        try:
+            html_content = get_page_content(url)
+        except Exception as e:
+            print(f"Fehler beim Abrufen von Seite {page}: {e}")
+            break
+
         soup = BeautifulSoup(html_content, "html.parser")
 
         # Suche nach Job-Elementen
         job_articles = soup.find_all("article", class_="job-details")
+        if not job_articles:
+            print(f"Keine weiteren Jobartikel auf Seite {page} gefunden. Beende die Suche.")
+            break
+
         for job in job_articles:
             try:
                 title = job.find("h2", class_="header-title").get_text(strip=True)
@@ -50,7 +62,8 @@ def scrape_jobs(base_url, max_pages=10):
                 location = "N/A"
 
             try:
-                description = job.find("div", class_="job-description").get_text(strip=True)
+                description_tag = job.find("div", class_="job-description")
+                description = description_tag.get_text(strip=True) if description_tag else "N/A"
             except AttributeError:
                 description = "N/A"
 
@@ -62,6 +75,11 @@ def scrape_jobs(base_url, max_pages=10):
             })
 
         print(f"Seite {page} verarbeitet.")
+        socketio.emit('update', {'message': f"Seite {page} verarbeitet."})
+        time.sleep(2)  # Warte 2 Sekunden, um Rate Limits zu vermeiden
+
+    # Entferne doppelte Einträge
+    jobs = [dict(t) for t in {tuple(d.items()) for d in jobs}]
 
     return jobs
 
@@ -86,6 +104,7 @@ def save_to_csv(jobs, filename="jobs.csv"):
         writer.writerows(jobs)
 
     print(f"Jobs wurden in {filename} gespeichert.")
+    socketio.emit('update', {'message': f"Jobs wurden in {filename} gespeichert."})
 
 @app.route("/")
 def index():
@@ -93,7 +112,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=10)
+    jobs = scrape_jobs(base_url, max_pages=50)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
@@ -103,4 +122,4 @@ def files():
     return jsonify(files)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app, debug=True)
