@@ -94,7 +94,7 @@
         <div id="status" class="status-message"></div>
 
         <div class="file-list">
-            <h4>Available Files:</h4>
+            <h4>Available File:</h4>
             <ul id="file-list">
                 <!-- File names will be dynamically loaded here -->
             </ul>
@@ -127,7 +127,7 @@
         document.getElementById('scrape-btn').addEventListener('click', function () {
             const status = document.getElementById('status');
             const loader = document.getElementById('loader');
-            status.textContent = "Scraping jobs... Please wait.";
+            status.textContent = "Scraping jobs... This may take a few minutes. Please wait.";
             loader.style.display = "block";
             updateProgressBar(0);
 

@@ -46,33 +46,21 @@ def scrape_jobs(base_url, max_pages=100):
             break
 
         for job in job_articles:
-            try:
-                title = job.find("h2", class_="header-title").get_text(strip=True)
-            except AttributeError:
-                title = "N/A"
+            job_data = {}
 
-            try:
-                company = job.find("h2", class_="company-title").get_text(strip=True)
-            except AttributeError:
-                company = "N/A"
+            # Firma
+            company_tag = job.find("h2", class_="company-title")
+            job_data["company"] = company_tag.get_text(strip=True) if company_tag else "N/A"
 
-            try:
-                location = job.find("a", class_="company-location").get_text(strip=True)
-            except AttributeError:
-                location = "N/A"
+            # Standort
+            location_tag = job.find("a", class_="company-location")
+            job_data["location"] = location_tag.get_text(strip=True) if location_tag else "N/A"
 
-            try:
-                description_tag = job.find("div", class_="job-description")
-                description = description_tag.get_text(strip=True) if description_tag else "N/A"
-            except AttributeError:
-                description = "N/A"
+            # Beschreibung
+            description_tag = job.find("div", class_="job-description")
+            job_data["description"] = description_tag.get_text(strip=True) if description_tag else "N/A"
 
-            jobs.append({
-                "title": title,
-                "company": company,
-                "location": location,
-                "description": description
-            })
+            jobs.append(job_data)
 
         print(f"Seite {page} verarbeitet.")
         socketio.emit('update', {'message': f"Seite {page} verarbeitet."})
@@ -97,7 +85,8 @@ def save_to_csv(jobs, filename="jobs.csv"):
         filename = os.path.join(DATA_FOLDER, f"{base_filename}{counter}{extension}")
         counter += 1
 
-    keys = jobs[0].keys()
+    # Speichere nur die gewünschten Felder
+    keys = ["company", "location", "description"]
     with open(filename, "w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=keys)
         writer.writeheader()
@@ -112,7 +101,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=50)  # Höheres Limit für mehr Seiten
+    jobs = scrape_jobs(base_url, max_pages=10)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
