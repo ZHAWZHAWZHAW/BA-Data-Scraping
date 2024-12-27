@@ -111,7 +111,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=30)  # Höheres Limit für mehr Seiten
+    jobs = scrape_jobs(base_url, max_pages=20)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
