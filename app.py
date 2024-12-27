@@ -71,29 +71,39 @@ def scrape_jobs(base_url, max_pages=100):
 
     return jobs
 
-# Funktion zum Speichern in eine CSV
+# Funktion zum Aktualisieren eines bestehenden CSVs oder zum Erstellen eines neuen
 def save_to_csv(jobs, filename="jobs.csv"):
     if not jobs:
         print("Keine Jobs gefunden.")
         return
 
-    # Überprüfe, ob die Datei existiert, und finde einen neuen Namen
-    base_filename, extension = os.path.splitext(filename)
-    filename = os.path.join(DATA_FOLDER, filename)
-    counter = 1
-    while os.path.exists(filename):
-        filename = os.path.join(DATA_FOLDER, f"{base_filename}{counter}{extension}")
-        counter += 1
+    # Vollständiger Pfad zur Datei
+    filepath = os.path.join(DATA_FOLDER, filename)
 
-    # Speichere nur die gewünschten Felder
-    keys = ["company", "location", "description"]
-    with open(filename, "w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=keys)
-        writer.writeheader()
-        writer.writerows(jobs)
+    # Existierende Daten laden, falls die Datei existiert
+    existing_jobs = []
+    if os.path.exists(filepath):
+        with open(filepath, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            existing_jobs = list(reader)
 
-    print(f"Jobs wurden in {filename} gespeichert.")
-    socketio.emit('update', {'message': f"Jobs wurden in {filename} gespeichert."})
+    # Bestehende Jobs als Menge für schnelle Suche
+    existing_jobs_set = {tuple(job.items()) for job in existing_jobs}
+
+    # Neue Jobs hinzufügen, falls sie nicht existieren
+    new_jobs = [job for job in jobs if tuple(job.items()) not in existing_jobs_set]
+
+    if new_jobs:
+        print(f"{len(new_jobs)} neue Jobs gefunden und hinzugefügt.")
+        with open(filepath, "a", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=["company", "location", "description"])
+            if not existing_jobs:  # Header schreiben, falls Datei neu erstellt wird
+                writer.writeheader()
+            writer.writerows(new_jobs)
+    else:
+        print("Keine neuen Jobs zum Hinzufügen gefunden.")
+
+    socketio.emit('update', {'message': f"Jobs wurden in {filename} aktualisiert."})
 
 @app.route("/")
 def index():
@@ -101,7 +111,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=10)  # Höheres Limit für mehr Seiten
+    jobs = scrape_jobs(base_url, max_pages=30)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
