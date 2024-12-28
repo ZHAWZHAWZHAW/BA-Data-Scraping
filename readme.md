@@ -115,8 +115,6 @@ project-root/
 
 ## 7. 📸 Sneak Peek
 
-## 7. 📸 Sneak Peek
-
 <details>
 <summary>Screenshot 1: Overview Page</summary>
 <img width="1206" alt="Bildschirmfoto 2024-12-28 um 14 22 12" src="https://github.com/user-attachments/assets/82fbe379-1323-4cc4-b991-8de6d0a979f6" />
