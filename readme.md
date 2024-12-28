@@ -1,4 +1,6 @@
-# 🚀 Flask Job Scraper Application
+# 🚀 Job Scraper Application
+
+This application is a preparatory task for my Bachelor's thesis (submission May 2025) in the Bachelor of Business Information Technology program at ZHAW School of Management and Law with a major in Data Science. It aims to collect the latest data on jobs in the field of "Data Science" to later analyze the requirements of the "Data Science" job profile as part of the Bachelor's thesis.
 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into CSV files for further analysis.
 
@@ -9,9 +11,12 @@ This project is a Flask-based web application that scrapes job listings from a s
 1. 🛠️ [Features](#1-features)
 2. 📋 [Prerequisites](#2-prerequisites)
 3. ⚙️ [Installation](#3-installation)
-4. 🐳 [Running with Docker](#4-running-with-docker)   
+4. 🐳 [Running with Docker](#4-running-with-docker)
+
+   4.1. 🔧 [Running Locally](#41-running-locally)     
 5. 🌐 [Application Endpoints](#5-application-endpoints)
 6. 📂 [Folder Structure](#6-folder-structure)
+7. ✉️ [Contact](#7-contact)
 
 ---
 
@@ -63,7 +68,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    http://localhost:8080
    ```
 
-   ### ▶️ 4.1 Running Locally
+   ### 🔧 4.1 Running Locally
 
    1. Start the Flask application:
       ```bash
@@ -102,3 +107,12 @@ project-root/
 ├── templates/            # HTML templates for the web interface
 └── README.md             # Project documentation
 ```
+
+---
+
+## ✉️ 7. Contact
+
+If you have any questions or need further assistance, feel free to contact me at:
+
+- **Email:** schneli3@students.zhaw.ch
+- **GitHub:** [ZHAWZHAWZHAW](https://github.com/ZHAWZHAWZHAW)
