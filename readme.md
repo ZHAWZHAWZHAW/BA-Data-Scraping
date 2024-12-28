@@ -87,10 +87,7 @@ This project is a Flask-based web application that scrapes job listings from a s
   - Displays the main index page.
 
 - **Scrape Jobs:** `/scrape`
-  - Scrapes job data and saves it into a CSV file.
-
-- **List Files:** `/files`
-  - Returns a JSON list of all saved CSV files.
+  - Scrapes job data and saves it into a CSV file. 
 
 ---
 
