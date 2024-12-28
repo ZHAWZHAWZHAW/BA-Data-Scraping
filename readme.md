@@ -1,7 +1,7 @@
 # 🚀 Job Web-Scraper Application
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/721e6854-a4ee-44b7-9837-c114ef1ec3a9" alt="Job Web-Scraper Application" width="80%">
+  <img src="https://github.com/user-attachments/assets/393ca6f9-d086-4828-a3c6-af89b54a126d" alt="Job Web-Scraper Application" width="80%">
 </p>
 
 ---
