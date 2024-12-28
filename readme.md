@@ -1,8 +1,8 @@
 # 🚀 Job Scraper Application
 
-This application is a preparatory task for my Bachelor's thesis (submission May 2025) in the Bachelor of Business Information Technology program at ZHAW School of Management and Law with a major in Data Science. It aims to collect the latest data on jobs in the field of "Data Science" to later analyze the requirements of the "Data Science" job profile as part of the Bachelor's thesis.
+This application is a preparatory task for my Bachelor's thesis (submission May 2025) in the Bachelor of Business Information Technology program at ZHAW School of Management and Law with a major in Data Science. It aims to collect the latest data on jobs in the field of Data Science to later analyze the requirements of the "Data Science" job profile as part of the Bachelor's thesis.
 
-This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into CSV files for further analysis.
+This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into a CSV file for further analysis.
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue) 
 ![Docker](https://img.shields.io/badge/docker-supported-brightgreen) 
@@ -13,33 +13,24 @@ This project is a Flask-based web application that scrapes job listings from a s
 ## 📖 Table of Contents
 
 1. 🛠️ [Features](#1-features)
-2. 📋 [Prerequisites](#2-prerequisites)
-3. ⚙️ [Installation](#3-installation) 
-4. 🌐 [Application Endpoints](#4-application-endpoints)
-5. 📂 [Folder Structure](#5-folder-structure)
-6. 📸 [Sneak Peek](#6-sneak-peek)
-7. ✉️ [Contact](#7-contact)
+2. ⚙️ [Installation](#2-installation) 
+3. 🌐 [Application Endpoints](#3-application-endpoints)
+4. 📂 [Folder Structure](#4-folder-structure)
+5. 📸 [Sneak Peek](#5-sneak-peek)
+6. ✉️ [Contact](#6-contact)
 
 ---
 
 ## 1. Features
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
-- Saves scraped job data into CSV files
-- Provides an endpoint to list the generated CSV files
+- Saves scraped job data into CSV file
 - Built with Flask and BeautifulSoup
 - Automatically removes duplicate entries in job data
 
 ---
 
-## 2. Prerequisites
-
-- Python 3.9 or higher
-- Docker (if you want to run the application using Docker)
-
----
-
-## 3. Installation
+## 2. Installation
 
 1. Clone this repository:
    ```bash
@@ -51,9 +42,14 @@ This project is a Flask-based web application that scrapes job listings from a s
    pip install -r requirements.txt
    ```
 
+3. Run app.py
+  ```bash
+   python app.py
+   ```
+
 ---
 
-## 4. Application Endpoints
+## 3. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
@@ -63,12 +59,12 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 5. Folder Structure
+## 4. Folder Structure
 
 ```
 project-root/
 │
-├── data/                 # Folder to store scraped CSV files
+├── data/                 # Folder to store scraped CSV file
 ├── templates/            # HTML templates for the web interface
 │   └── index.html
 ├── .gitignore            # Git ignore file
@@ -79,7 +75,7 @@ project-root/
 
 ---
 
-## 6. Sneak Peek
+## 5. Sneak Peek
 
 <details>
 <summary>Screenshot 1: Build application</summary>
@@ -103,7 +99,7 @@ project-root/
 
 ---
 
-## 7. Contact
+## 6. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 
