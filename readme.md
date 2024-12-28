@@ -14,12 +14,11 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 1. 🛠️ [Features](#1-features)
 2. 📋 [Prerequisites](#2-prerequisites)
-3. ⚙️ [Installation](#3-installation)
-4. 🐳 [Running with Docker](#4-running-with-docker)  
-5. 🌐 [Application Endpoints](#5-application-endpoints)
-6. 📂 [Folder Structure](#6-folder-structure)
-7. 📸 [Sneak Peek](#7-sneak-peek)
-8. ✉️ [Contact](#8-contact)
+3. ⚙️ [Installation](#3-installation) 
+4. 🌐 [Application Endpoints](#4-application-endpoints)
+5. 📂 [Folder Structure](#5-folder-structure)
+6. 📸 [Sneak Peek](#6-sneak-peek)
+7. ✉️ [Contact](#7-contact)
 
 ---
 
@@ -54,26 +53,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 4. Running with Docker
-
-1. Build the Docker image:
-   ```bash
-   docker build -t job-scraper .
-   ```
-
-2. Run the Docker container:
-   ```bash
-   docker run -p 8080:8080 job-scraper
-   ```
-
-3. Access the application in your browser:
-   ```
-   http://localhost:8080
-   ```
-
----
-
-## 5. Application Endpoints
+## 4. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
@@ -83,7 +63,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 6. Folder Structure
+## 5. Folder Structure
 
 ```
 project-root/
@@ -93,17 +73,16 @@ project-root/
 │   └── index.html
 ├── .gitignore            # Git ignore file
 ├── app.py                # Main Flask application
-├── Dockerfile            # Docker configuration
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
 ```
 
 ---
 
-## 7. Sneak Peek
+## 6. Sneak Peek
 
 <details>
-<summary>Screenshot 1: Build Dockerfile</summary>
+<summary>Screenshot 1: Build application</summary>
 <img width="1206" alt="Bildschirmfoto 2024-12-28 um 14 22 12" src="https://github.com/user-attachments/assets/82fbe379-1323-4cc4-b991-8de6d0a979f6" />
 </details>
 
@@ -124,7 +103,7 @@ project-root/
 
 ---
 
-## 8. Contact
+## 7. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 

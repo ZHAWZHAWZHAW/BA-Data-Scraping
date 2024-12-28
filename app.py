@@ -7,24 +7,22 @@ import time
 
 app = Flask(__name__)
 
-# Directory to store CSV file
+# Pfad zum Datenordner (bereits vorhanden)
 DATA_FOLDER = "data"
-if not os.path.exists(DATA_FOLDER):
-    os.makedirs(DATA_FOLDER)
 
-# Base URL of the job site
+# Basis-URL der Jobseite
 base_url = "https://www.jobscout24.ch/de/jobs/Data%20Science/?page={page}"
 
-# Function to fetch page content
+# Funktion: Holt den Inhalt einer Seite
 def get_page_content(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.199 Safari/537.36"
     }
     response = requests.get(url, headers=headers)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+    response.raise_for_status()  # Ausnahme bei HTTP-Fehlern
     return response.text
 
-# Function to scrape job data
+# Funktion: Jobs scrapen
 def scrape_jobs(base_url, max_pages=100):
     jobs = []
 
@@ -33,73 +31,73 @@ def scrape_jobs(base_url, max_pages=100):
         try:
             html_content = get_page_content(url)
         except Exception as e:
-            print(f"Error fetching page {page}: {e}")
+            print(f"Fehler beim Abrufen von Seite {page}: {e}")
             break
 
         soup = BeautifulSoup(html_content, "html.parser")
 
-        # Search for job elements
+        # Suche nach Job-Elementen
         job_articles = soup.find_all("article", class_="job-details")
         if not job_articles:
-            print(f"No more job articles found on page {page}. Stopping search.")
+            print(f"Keine weiteren Jobartikel auf Seite {page} gefunden. Suche beendet.")
             break
 
         for job in job_articles:
             job_data = {}
 
-            # Extract company name
+            # Firma extrahieren
             company_tag = job.find("h2", class_="company-title")
             job_data["company"] = company_tag.get_text(strip=True) if company_tag else "N/A"
 
-            # Extract location
+            # Ort extrahieren
             location_tag = job.find("a", class_="company-location")
             job_data["location"] = location_tag.get_text(strip=True) if location_tag else "N/A"
 
-            # Extract job description
+            # Jobbeschreibung extrahieren
             description_tag = job.find("div", class_="job-description")
             job_data["description"] = description_tag.get_text(strip=True) if description_tag else "N/A"
 
             jobs.append(job_data)
 
-        print(f"Page {page} processed.")
-        time.sleep(2)  # Wait 2 seconds to avoid rate limits
+        print(f"Seite {page} verarbeitet.")
+        time.sleep(2)  # 2 Sekunden warten, um Rate Limits zu vermeiden
 
-    # Remove duplicate entries
+    # Duplikate entfernen
     jobs = [dict(t) for t in {tuple(d.items()) for d in jobs}]
 
     return jobs
 
-# Function to update or create a new CSV file
+# Funktion: Speichern oder Aktualisieren der CSV-Datei
 def save_to_csv(jobs, filename="jobs.csv"):
     if not jobs:
-        print("No jobs found.")
+        print("Keine Jobs gefunden.")
         return
 
-    # Full path to the file
+    # Vollständiger Pfad zur Datei
     filepath = os.path.join(DATA_FOLDER, filename)
 
-    # Load existing data if the file exists
+    # Vorhandene Daten laden, falls die Datei existiert
     existing_jobs = []
     if os.path.exists(filepath):
         with open(filepath, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
             existing_jobs = list(reader)
 
-    # Create a set of existing jobs for quick lookup
+    # Set bestehender Jobs für schnellen Lookup erstellen
     existing_jobs_set = {tuple(job.items()) for job in existing_jobs}
 
-    # Add new jobs if they do not already exist
+    # Neue Jobs hinzufügen, falls sie nicht existieren
     new_jobs = [job for job in jobs if tuple(job.items()) not in existing_jobs_set]
 
     if new_jobs:
-        print(f"{len(new_jobs)} new jobs found and added.")
+        print(f"{len(new_jobs)} neue Jobs gefunden und hinzugefügt.")
         with open(filepath, "a", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=["company", "location", "description"])
-            if not existing_jobs:  # Write header if file is newly created
+            if not existing_jobs:  # Header schreiben, falls Datei neu erstellt wird
                 writer.writeheader()
             writer.writerows(new_jobs)
     else:
-        print("No new jobs to add.")
+        print("Keine neuen Jobs hinzuzufügen.")
 
 @app.route("/")
 def index():
@@ -107,7 +105,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=50)  # Higher limit for more pages
+    jobs = scrape_jobs(base_url, max_pages=10)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
