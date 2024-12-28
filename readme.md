@@ -113,7 +113,7 @@ project-root/
 
 ---
 
-## 7. 📸 Sneak Peek
+## 7. Sneak Peek
 
 <details>
 <summary>Screenshot 1: Overview Page</summary>
@@ -141,7 +141,7 @@ _The admin panel allows for efficient management of listings and user data._
 
 ---
 
-## 8. ✉️ Contact
+## 8. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 
