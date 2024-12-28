@@ -16,7 +16,6 @@ This project is a Flask-based web application that scrapes job listings from a s
 2. 📋 [Prerequisites](#2-prerequisites)
 3. ⚙️ [Installation](#3-installation)
 4. 🐳 [Running with Docker](#4-running-with-docker)  
-   4.1. 🔧 [Running Locally](#41-running-locally)
 5. 🌐 [Application Endpoints](#5-application-endpoints)
 6. 📂 [Folder Structure](#6-folder-structure)
 7. 📸 [Sneak Peek](#7-sneak-peek)
@@ -68,18 +67,6 @@ This project is a Flask-based web application that scrapes job listings from a s
    ```
 
 3. Access the application in your browser:
-   ```
-   http://localhost:8080
-   ```
-
-### 4.1 Running Locally
-
-1. Start the Flask application:
-   ```bash
-   python app.py
-   ```
-
-2. Open your browser and navigate to:
    ```
    http://localhost:8080
    ```
