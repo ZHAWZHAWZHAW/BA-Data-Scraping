@@ -5,7 +5,6 @@ This application is a preparatory task for my Bachelor's thesis (submission May 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into a CSV file for further analysis.
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue) 
-![Docker](https://img.shields.io/badge/docker-supported-brightgreen) 
 
 
 ---
