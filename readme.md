@@ -1,4 +1,4 @@
-# 🚀 Job Scraper Application
+# 🚀 Job Web-Scraper Application
 
 This application is a preparatory task for my Bachelor's thesis (submission May 2025) in the Bachelor of Business Information Technology program at ZHAW School of Management and Law with a major in Data Science. It aims to collect the latest data on jobs in the field of Data Science to later analyze the requirements of the "Data Science" job profile as part of the Bachelor's thesis.
 
