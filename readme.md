@@ -121,17 +121,17 @@ project-root/
 </details>
 
 <details>
-<summary>Screenshot 2: Frontpage</summary>
+<summary>Screenshot 2: Start application</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 39" src="https://github.com/user-attachments/assets/1d1a0ed0-101d-4a12-b611-9b9b8ec9cd45" />
 </details>
 
 <details>
-<summary>Screenshot 3: Start Applikation</summary>
+<summary>Screenshot 3: Start scraping</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 45" src="https://github.com/user-attachments/assets/607d948f-fb16-491b-920b-c961d37d92c5" />
 </details>
 
 <details>
-<summary>Screenshot 4: Succsessfull Scraping</summary>
+<summary>Screenshot 4: Successful scraping</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 26 38" src="https://github.com/user-attachments/assets/b331b1bd-1aaf-463d-bd24-82f9ee3fd0fb" />
 </details>
 
