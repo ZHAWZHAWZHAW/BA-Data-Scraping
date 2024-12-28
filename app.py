@@ -7,7 +7,7 @@ import time
 
 app = Flask(__name__)
 
-# Directory to store CSV files
+# Directory to store CSV file
 DATA_FOLDER = "data"
 os.makedirs(DATA_FOLDER, exist_ok=True)
 
