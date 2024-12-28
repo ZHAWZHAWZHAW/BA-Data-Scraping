@@ -92,12 +92,12 @@ project-root/
 
 <details>
 <summary>Screenshot 2: Start application</summary>
-<img width="633" alt="Bildschirmfoto 2024-12-28 um 18 52 47" src="https://github.com/user-attachments/assets/129b7feb-bd06-4a36-bf8f-606f94cab5e0" />
+<img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 39" src="https://github.com/user-attachments/assets/6b7a69cc-3e46-4c59-bb32-1b3a49eadd87" />
 </details>
 
 <details>
 <summary>Screenshot 3: Start scraping</summary>
-<img width="1025" alt="Bildschirmfoto 2024-12-28 um 18 43 59" src="https://github.com/user-attachments/assets/65a2a11c-4145-40c1-a207-ac6c1bffd161" />
+<img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 45" src="https://github.com/user-attachments/assets/62833753-3072-4aa1-9397-56008052b096" />
 </details>
 
 <details>
