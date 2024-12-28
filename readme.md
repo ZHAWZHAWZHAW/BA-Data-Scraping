@@ -1,5 +1,8 @@
 # 🚀 Job Web-Scraper Application
 
+<img width="1025" alt="Bildschirmfoto 2024-12-28 um 18 43 59" src="https://github.com/user-attachments/assets/721e6854-a4ee-44b7-9837-c114ef1ec3a9" />
+
+
 This application is a preparatory task for my Bachelor's thesis (submission May 2025) in the Bachelor of Business Information Technology program at ZHAW School of Management and Law with a major in Data Science. It aims to collect the latest data on jobs in the field of Data Science to later analyze the requirements of the "Data Science" job profile as part of the Bachelor's thesis.
 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into a CSV file for further analysis.
