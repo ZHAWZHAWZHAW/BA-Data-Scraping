@@ -88,7 +88,7 @@ project-root/
 
 <details>
 <summary>Screenshot 1: Build application</summary>
-<img width="850" alt="Bildschirmfoto 2024-12-28 um 18 52 23" src="https://github.com/user-attachments/assets/af512f4b-d6bf-4f6a-ac98-eaa1c6d39a18" />
+<img width="850" alt="Bildschirmfoto 2024-12-28 um 18 52 23" src="https://github.com/user-attachments/assets/95d9b761-4714-4891-a895-552685e7cf45" />
 </details>
 
 <details>
