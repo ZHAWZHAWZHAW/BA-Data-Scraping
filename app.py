@@ -7,8 +7,12 @@ import time
 
 app = Flask(__name__)
 
-# Pfad zum Datenordner (bereits vorhanden)
+# Pfad zum Datenordner
 DATA_FOLDER = "data"
+
+# Sicherstellen, dass der Datenordner existiert
+if not os.path.exists(DATA_FOLDER):
+    os.makedirs(DATA_FOLDER)
 
 # Basis-URL der Jobseite
 base_url = "https://www.jobscout24.ch/de/jobs/Data%20Science/?page={page}"
@@ -105,7 +109,7 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=10)  # Höheres Limit für mehr Seiten
+    jobs = scrape_jobs(base_url, max_pages=20)  # Höheres Limit für mehr Seiten
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
