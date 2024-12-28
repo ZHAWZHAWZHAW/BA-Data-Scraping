@@ -30,7 +30,6 @@ def get_page_content(url):
 # Function: Scrapes job listings
 def scrape_jobs(base_url, max_pages=100):
     jobs = []
-
     for page in range(1, max_pages + 1):
         url = base_url.format(page=page)
         try:
@@ -38,30 +37,29 @@ def scrape_jobs(base_url, max_pages=100):
         except Exception as e:
             print(f"Error fetching page {page}: {e}")
             break
-
         soup = BeautifulSoup(html_content, "html.parser")
-
+       
         # Search for job elements
         job_articles = soup.find_all("li", class_="job-list-item")
         if not job_articles:
             print(f"No more job articles found on page {page}. Stopping search.")
             break
-
         for job in job_articles:
             job_data = {}
 
             # Extract job title as description
+
             description_tag = job.find("a", class_="job-link-detail job-title")
             job_data["description"] = description_tag.get_text(strip=True) if description_tag else "N/A"
-
+            
             # Extract company name
             company_tag = job.find("p", class_="job-attributes").find("span")
             job_data["company"] = company_tag.get_text(strip=True) if company_tag else "N/A"
-
+            
             # Extract location
             location_tag = company_tag.find_next_sibling("span") if company_tag else None
             job_data["location"] = location_tag.get_text(strip=True) if location_tag else "N/A"
-
+            
             # Extract detailed job description (if available)
             detail_url = description_tag["href"] if description_tag else None
             if detail_url:
@@ -75,15 +73,13 @@ def scrape_jobs(base_url, max_pages=100):
                         job_data["description"] += f"\n{detailed_description}"
                 except Exception as e:
                     print(f"Error fetching job details from {detail_page_url}: {e}")
-
             jobs.append(job_data)
-
+        
         print(f"Processed page {page}. Found {len(job_articles)} jobs.")
         time.sleep(2)  # Wait 2 seconds to avoid rate limits
-
+    
     # Remove duplicates
     jobs = [dict(t) for t in {tuple(d.items()) for d in jobs}]
-
     return jobs
 
 # Function: Save or update the CSV file
@@ -91,27 +87,26 @@ def save_to_csv(jobs, filename="jobs.csv"):
     if not jobs:
         print("No jobs found.")
         return
-
+   
     # Full path to the file
     filepath = os.path.join(DATA_FOLDER, filename)
-
+    
     # Load existing data if the file exists
     existing_jobs = []
     if os.path.exists(filepath):
         with open(filepath, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
             existing_jobs = list(reader)
-
+    
     # Create a set of existing jobs for quick lookup
     existing_jobs_set = {tuple(job.items()) for job in existing_jobs}
-
-    # Add new jobs if they don't already exist
+   
+    #Add new jobs if they don't already exist
     new_jobs = [job for job in jobs if tuple(job.items()) not in existing_jobs_set]
-
+    
     # Add a unique identifier for each job
     for idx, job in enumerate(new_jobs, start=len(existing_jobs) + 1):
         job["id"] = idx
-
     if new_jobs:
         print(f"{len(new_jobs)} new jobs found and added.")
         with open(filepath, "a", newline="", encoding="utf-8") as file:
@@ -140,7 +135,6 @@ def get_jobs():
     csv_file = os.path.join(DATA_FOLDER, "jobs.csv")
     if not os.path.exists(csv_file):
         return jsonify({"error": "No jobs data found."}), 404
-
     df = pd.read_csv(csv_file)
     return df.to_json(orient="records")
 
