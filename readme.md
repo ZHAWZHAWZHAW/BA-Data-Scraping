@@ -4,19 +4,19 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 1. Table of Contents
+## 📖 Table of Contents
 
-1. [Features](#2-features)
-2. [Prerequisites](#3-prerequisites)
-3. [Installation](#4-installation)
-4. [Running Locally](#5-running-locally)
-5. [Running with Docker](#6-running-with-docker)
-6. [Application Endpoints](#7-application-endpoints)
-7. [Folder Structure](#8-folder-structure)
+1. [Features](#1-features)
+2. [Prerequisites](#2-prerequisites)
+3. [Installation](#3-installation)
+4. [Running Locally](#4-running-locally)
+5. [Running with Docker](#5-running-with-docker)
+6. [Application Endpoints](#6-application-endpoints)
+7. [Folder Structure](#7-folder-structure)
 
 ---
 
-## 2. Features
+## 🛠️ 1. Features
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
 - Saves scraped job data into CSV files
@@ -26,14 +26,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 3. Prerequisites
+## 📋 2. Prerequisites
 
 - Python 3.9 or higher
 - Docker (if you want to run the application using Docker)
 
 ---
 
-## 4. Installation
+## ⚙️ 3. Installation
 
 1. Clone this repository:
    ```bash
@@ -48,7 +48,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 5. Running Locally
+## ▶️ 4. Running Locally
 
 1. Start the Flask application:
    ```bash
@@ -62,7 +62,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 6. Running with Docker
+## 🐳 5. Running with Docker
 
 1. Build the Docker image:
    ```bash
@@ -81,7 +81,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 7. Application Endpoints
+## 🌐 6. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
@@ -95,7 +95,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 8. Folder Structure
+## 📂 7. Folder Structure
 
 ```
 project-root/
