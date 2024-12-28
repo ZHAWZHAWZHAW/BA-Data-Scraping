@@ -65,9 +65,9 @@ This project is a Flask-based web application that scrapes job listings from a s
 project-root/
 │
 ├── data/                 # Folder to store scraped CSV file
-├── templates/            # HTML templates for the web interface
+├── templates/            # HTML template for the web interface
 │   └── index.html
-├── .gitignore            # Git ignore file
+├── .gitignore            # Git ignore CSV file
 ├── app.py                # Main Flask application
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
