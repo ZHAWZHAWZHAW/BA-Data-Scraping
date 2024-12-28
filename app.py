@@ -4,11 +4,12 @@ from bs4 import BeautifulSoup
 import csv
 import os
 import time
+import hashlib
 
 app = Flask(__name__)
 
 # Path to the data folder
-DATA_FOLDER = "data"
+DATA_FOLDER = "data/raw"
 
 # Ensure the data folder exists
 if not os.path.exists(DATA_FOLDER):
@@ -25,6 +26,24 @@ def get_page_content(url):
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # Raise exception for HTTP errors
     return response.text
+
+# Function: Generates a unique hash for a job
+def hash_job(job):
+    """Erzeugt einen eindeutigen Hash für ein Job-Dictionary."""
+    job_str = f"{job['description']}|{job['company']}|{job['location']}"
+    return hashlib.sha256(job_str.encode('utf-8')).hexdigest()
+
+# Function: Removes duplicate jobs
+def remove_duplicates(jobs):
+    """Entfernt Duplikate basierend auf Hashes."""
+    seen_hashes = set()
+    unique_jobs = []
+    for job in jobs:
+        job_hash = hash_job(job)
+        if job_hash not in seen_hashes:
+            seen_hashes.add(job_hash)
+            unique_jobs.append(job)
+    return unique_jobs
 
 # Function: Scrapes job listings
 def scrape_jobs(base_url, max_pages=100):
@@ -81,7 +100,7 @@ def scrape_jobs(base_url, max_pages=100):
         time.sleep(2)  # Wait 2 seconds to avoid rate limits
 
     # Remove duplicates
-    jobs = [dict(t) for t in {tuple(d.items()) for d in jobs}]
+    jobs = remove_duplicates(jobs)
 
     return jobs
 
@@ -95,27 +114,24 @@ def save_to_csv(jobs, filename="jobs.csv"):
     filepath = os.path.join(DATA_FOLDER, filename)
 
     # Load existing data if the file exists
-    existing_jobs = []
+    existing_hashes = set()
     if os.path.exists(filepath):
         with open(filepath, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
-            existing_jobs = list(reader)
-
-    # Create a set of existing jobs for quick lookup
-    existing_jobs_set = {tuple(job.items()) for job in existing_jobs}
+            existing_hashes = {hash_job(row) for row in reader}
 
     # Add new jobs if they don't already exist
-    new_jobs = [job for job in jobs if tuple(job.items()) not in existing_jobs_set]
+    new_jobs = [job for job in jobs if hash_job(job) not in existing_hashes]
 
     # Add a unique identifier for each job
-    for idx, job in enumerate(new_jobs, start=len(existing_jobs) + 1):
+    for idx, job in enumerate(new_jobs, start=1):
         job["id"] = idx
 
     if new_jobs:
         print(f"{len(new_jobs)} new jobs found and added.")
         with open(filepath, "a", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=["id", "company", "location", "description"])
-            if not existing_jobs:  # Write header if file is newly created
+            if not os.path.exists(filepath) or os.stat(filepath).st_size == 0:  # Write header if file is newly created
                 writer.writeheader()
             writer.writerows(new_jobs)
     else:
