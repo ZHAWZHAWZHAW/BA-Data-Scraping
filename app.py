@@ -41,7 +41,7 @@ def scrape_jobs(base_url, max_pages=100):
         soup = BeautifulSoup(html_content, "html.parser")
 
         # Search for job elements
-        job_articles = soup.find_all("article", class_="job-details")
+        job_articles = soup.find_all("li", class_="job-list-item")
         if not job_articles:
             print(f"No more job articles found on page {page}. Stopping search.")
             break
@@ -49,21 +49,35 @@ def scrape_jobs(base_url, max_pages=100):
         for job in job_articles:
             job_data = {}
 
+            # Extract job title as description
+            description_tag = job.find("a", class_="job-link-detail job-title")
+            job_data["description"] = description_tag.get_text(strip=True) if description_tag else "N/A"
+
             # Extract company name
-            company_tag = job.find("h2", class_="company-title")
+            company_tag = job.find("p", class_="job-attributes").find("span")
             job_data["company"] = company_tag.get_text(strip=True) if company_tag else "N/A"
 
             # Extract location
-            location_tag = job.find("a", class_="company-location")
+            location_tag = company_tag.find_next_sibling("span") if company_tag else None
             job_data["location"] = location_tag.get_text(strip=True) if location_tag else "N/A"
 
-            # Extract job description
-            description_tag = job.find("div", class_="job-description")
-            job_data["description"] = description_tag.get_text(strip=True) if description_tag else "N/A"
+            # Extract detailed job description (if available)
+            detail_url = description_tag["href"] if description_tag else None
+            if detail_url:
+                detail_page_url = f"https://www.jobscout24.ch{detail_url}"
+                try:
+                    detail_page_content = get_page_content(detail_page_url)
+                    detail_soup = BeautifulSoup(detail_page_content, "html.parser")
+                    detail_description_tag = detail_soup.find("div", class_="job-description")
+                    if detail_description_tag:
+                        detailed_description = detail_description_tag.get_text(strip=True)
+                        job_data["description"] += f"\n{detailed_description}"
+                except Exception as e:
+                    print(f"Error fetching job details from {detail_page_url}: {e}")
 
             jobs.append(job_data)
 
-        print(f"Processed page {page}.")
+        print(f"Processed page {page}. Found {len(job_articles)} jobs.")
         time.sleep(2)  # Wait 2 seconds to avoid rate limits
 
     # Remove duplicates
@@ -93,10 +107,14 @@ def save_to_csv(jobs, filename="jobs.csv"):
     # Add new jobs if they don't already exist
     new_jobs = [job for job in jobs if tuple(job.items()) not in existing_jobs_set]
 
+    # Add a unique identifier for each job
+    for idx, job in enumerate(new_jobs, start=len(existing_jobs) + 1):
+        job["id"] = idx
+
     if new_jobs:
         print(f"{len(new_jobs)} new jobs found and added.")
         with open(filepath, "a", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=["company", "location", "description"])
+            writer = csv.DictWriter(file, fieldnames=["id", "company", "location", "description"])
             if not existing_jobs:  # Write header if file is newly created
                 writer.writeheader()
             writer.writerows(new_jobs)
