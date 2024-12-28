@@ -110,10 +110,5 @@ def scrape():
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
-@app.route("/files")
-def files():
-    files = [f for f in os.listdir(DATA_FOLDER) if f.startswith("jobs") and f.endswith(".csv")]
-    return jsonify(files)
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=8080)
