@@ -1,2 +1,5 @@
-# Ignoriere alle .csv-Dateien
+# Ignore all .csv
 *.csv
+
+#Ignore virtual environment
+/venv
