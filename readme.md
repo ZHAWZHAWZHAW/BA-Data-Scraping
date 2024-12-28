@@ -41,9 +41,9 @@ This project is a Flask-based web application that scrapes job listings from a s
    ```bash
    pip install -r requirements.txt
    ```
-
+   
 3. Run app.py
-  ```bash
+   ```bash
    python app.py
    ```
 
