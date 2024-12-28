@@ -8,14 +8,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ## 📖 Table of Contents
 
-1.  [Features](#features)
-2. 📋 [Prerequisites](#prerequisites)
-3. ⚙️ [Installation](#installation)
-4. 🐳 [Running with Docker](#running-with-docker)   
-   4.1. 🔧 [Running Locally](#running-locally)
-5. 🌐 [Application Endpoints](#application-endpoints)
-6. 📂 [Folder Structure](#folder-structure)
-7. ✉️ [Contact](#contact)
+1. [Features](#1-features)
+2. [Prerequisites](#2-prerequisites)
+3. [Installation](#3-installation)
+4. [Running with Docker](#4-running-with-docker)  
+   4.1. [Running Locally](#41-running-locally)
+5. [Application Endpoints](#5-application-endpoints)
+6. [Folder Structure](#6-folder-structure)
+7. [Contact](#7-contact)
 
 ---
 
@@ -29,14 +29,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 📋 2. Prerequisites
+## 2. Prerequisites
 
 - Python 3.9 or higher
 - Docker (if you want to run the application using Docker)
 
 ---
 
-## ⚙️ 3. Installation
+## 3. Installation
 
 1. Clone this repository:
    ```bash
@@ -50,7 +50,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 🐳 4. Running with Docker
+## 4. Running with Docker
 
 1. Build the Docker image:
    ```bash
@@ -67,7 +67,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    http://localhost:8080
 
 
-### 🔧 4.1 Running Locally
+### 4.1 Running Locally
 
 1. Start the Flask application:
    ```bash
@@ -81,7 +81,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 🌐 5. Application Endpoints
+## 5. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
@@ -91,7 +91,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 📂 6. Folder Structure
+## 6. Folder Structure
 
 ```
 project-root/
@@ -108,7 +108,7 @@ project-root/
 
 ---
 
-## ✉️ 7. Contact
+## 7. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 
