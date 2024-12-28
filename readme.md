@@ -19,6 +19,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
+## 🛠️
 ## 1. Features
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
@@ -28,14 +29,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 - Automatically removes duplicate entries in job data
 
 ---
-
+## 📋
 ## 2. Prerequisites
 
 - Python 3.9 or higher
 - Docker (if you want to run the application using Docker)
 
 ---
-
+## ⚙️
 ## 3. Installation
 
 1. Clone this repository:
@@ -49,7 +50,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    ```
 
 ---
-
+## 🐳
 ## 4. Running with Docker
 
 1. Build the Docker image:
@@ -66,7 +67,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    ```
    http://localhost:8080
 
-
+### 🔧
 ### 4.1 Running Locally
 
 1. Start the Flask application:
@@ -80,7 +81,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    ```
 
 ---
-
+## 🌐
 ## 5. Application Endpoints
 
 - **Home Page:** `/`
@@ -90,7 +91,7 @@ This project is a Flask-based web application that scrapes job listings from a s
   - Scrapes job data and saves it into a CSV file. 
 
 ---
-
+## 📂
 ## 6. Folder Structure
 
 ```
@@ -107,7 +108,7 @@ project-root/
 ```
 
 ---
-
+## ✉️
 ## 7. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
