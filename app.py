@@ -125,7 +125,7 @@ def index():
 # Flask route: Scrape jobs and save to CSV
 @app.route("/scrape")
 def scrape():
-    jobs = scrape_jobs(base_url, max_pages=50)  # Higher limit for more pages
+    jobs = scrape_jobs(base_url, max_pages=1)  # Higher limit for more pages
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
