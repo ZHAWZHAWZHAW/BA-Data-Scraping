@@ -24,7 +24,8 @@ This project is a Flask-based web application that scrapes job listings from a s
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
 - Saves scraped job data into CSV file
 - Built with Flask and BeautifulSoup
-- Automatically removes duplicate entries in job data
+- Tries to remove duplicate entries
+- Displays all the jobs scraped on the frontend
 
 ## 2. Installation
 
