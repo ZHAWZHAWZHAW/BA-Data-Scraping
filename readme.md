@@ -88,17 +88,17 @@ project-root/
 
 <details>
 <summary>Screenshot 1: Build application</summary>
-<img width="846" alt="Bildschirmfoto 2024-12-28 um 16 22 14" src="https://github.com/user-attachments/assets/b461cd1e-4617-4260-bbfe-19db33fcf2c1" />
+<img width="850" alt="Bildschirmfoto 2024-12-28 um 18 52 23" src="https://github.com/user-attachments/assets/af512f4b-d6bf-4f6a-ac98-eaa1c6d39a18" />
 </details>
 
 <details>
 <summary>Screenshot 2: Start application</summary>
-<img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 39" src="https://github.com/user-attachments/assets/1d1a0ed0-101d-4a12-b611-9b9b8ec9cd45" />
+<img width="633" alt="Bildschirmfoto 2024-12-28 um 18 52 47" src="https://github.com/user-attachments/assets/129b7feb-bd06-4a36-bf8f-606f94cab5e0" />
 </details>
 
 <details>
 <summary>Screenshot 3: Start scraping</summary>
-<img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 45" src="https://github.com/user-attachments/assets/607d948f-fb16-491b-920b-c961d37d92c5" />
+<img width="1025" alt="Bildschirmfoto 2024-12-28 um 18 43 59" src="https://github.com/user-attachments/assets/65a2a11c-4145-40c1-a207-ac6c1bffd161" />
 </details>
 
 <details>
