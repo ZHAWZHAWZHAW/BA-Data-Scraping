@@ -15,9 +15,10 @@ This project is a Flask-based web application that scrapes job listings from a s
 1. 🛠️ [Features](#1-features)
 2. ⚙️ [Installation](#2-installation) 
 3. 🌐 [Application Endpoints](#3-application-endpoints)
-4. 📂 [Folder Structure](#4-folder-structure)
-5. 📸 [Sneak Peek](#5-sneak-peek)
-6. ✉️ [Contact](#6-contact)
+4. 🧹 [Data Cleaning](#4-data-cleaning)
+5. 📂 [Folder Structure](#5-folder-structure)
+6. 📸 [Sneak Peek](#6-sneak-peek)
+7. ✉️ [Contact](#7-contact)
 
 ## 1. Features
 
@@ -69,12 +70,30 @@ This project is a Flask-based web application that scrapes job listings from a s
 - **Scrape Jobs:** `/scrape`
   - Scrapes job data and saves it into a CSV file. 
 
-## 4. Folder Structure
+## 4. Data Cleaning
+
+The data cleaning process ensures the integrity and consistency of the scraped job listings. It includes the following steps:
+
+1. **Normalization**: Text data in key columns (`company`, `location`, and `description`) is normalized by trimming whitespace and converting text to lowercase, improving duplicate detection.
+
+2. **Duplicate Removal**: Duplicates are identified and removed based on a combination of `company`, `location`, and `description`.
+
+3. **Column Cleanup**: If an `id` column exists in the raw data, it is removed to avoid conflicts.
+
+4. **New Sequential IDs**: A new `id` column is added with sequential numbering, starting from 1.
+
+5. **File Output**: The cleaned data is saved to `data/jobs_cleaned.csv` for subsequent analysis.
+
+This process significantly reduces redundancy and prepares the dataset for more accurate analysis. Run the cleaning script after scraping to ensure high-quality data.
+
+## 5. Folder Structure
 
 ```
 project-root/
 │
-├── data/                 # Folder to store scraped CSV file
+├── data/                 # Folder to store scraped & cleaned CSV files
+│   └── raw/
+│   └── cleanData.html
 ├── templates/            # HTML template for the web interface
 │   └── index.html
 ├── .gitignore            # Git ignore CSV file
@@ -83,7 +102,7 @@ project-root/
 └── requirements.txt      # Python dependencies
 ```
 
-## 5. Sneak Peek
+## 6. Sneak Peek
 
 <details>
 <summary>Screenshot 1: Build application</summary>
@@ -105,7 +124,7 @@ project-root/
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 26 38" src="https://github.com/user-attachments/assets/b331b1bd-1aaf-463d-bd24-82f9ee3fd0fb" />
 </details>
 
-## 6. Contact
+## 7. Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 
