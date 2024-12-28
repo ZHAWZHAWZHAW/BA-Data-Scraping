@@ -92,8 +92,10 @@ This process significantly reduces redundancy and prepares the dataset for more 
 project-root/
 │
 ├── data/                 # Folder to store scraped & cleaned CSV files
-│   └── raw/
-│   └── cleanData.html
+│   ├─── raw/
+│   │    └── jobs.csv
+│   ├── cleanData.html
+│   └── jobs_cleaned.csv
 ├── templates/            # HTML template for the web interface
 │   └── index.html
 ├── .gitignore            # Git ignore CSV file
