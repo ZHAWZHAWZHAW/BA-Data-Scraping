@@ -4,11 +4,6 @@ This application is a preparatory task for my Bachelor's thesis (submission May 
 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into a CSV file for further analysis.
 
-![Python](https://img.shields.io/badge/python-3.9%2B-blue) 
-
-
----
-
 ## 📖 Table of Contents
 
 1. 🛠️ [Features](#1-features)
@@ -18,16 +13,12 @@ This project is a Flask-based web application that scrapes job listings from a s
 5. 📸 [Sneak Peek](#5-sneak-peek)
 6. ✉️ [Contact](#6-contact)
 
----
-
 ## 1. Features
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
 - Saves scraped job data into CSV file
 - Built with Flask and BeautifulSoup
 - Automatically removes duplicate entries in job data
-
----
 
 ## 2. Installation
 
@@ -36,17 +27,33 @@ This project is a Flask-based web application that scrapes job listings from a s
    git clone https://github.com/ZHAWZHAWZHAW/BA-Data-Scraping.git
    ```
 
-2. Install Python dependencies:
+2. Create and activate a virtual environment:
+   - for macOS/Linux:
+      ```bash
+      python3 -m venv venv
+      source venv/bin/activate
+      ```
+   - for Windows:
+      ```bash
+      python -m venv venv
+      venv\Scripts\activate
+      ```
+
+3. Verify the Python version inside the virtual environment:
+   ```bash
+   python --version
+   ```
+
+4. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-   
-3. Run app.py
+
+5. Run the Flask application:
    ```bash
    python app.py
    ```
 
----
 
 ## 3. Application Endpoints
 
@@ -55,8 +62,6 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 - **Scrape Jobs:** `/scrape`
   - Scrapes job data and saves it into a CSV file. 
-
----
 
 ## 4. Folder Structure
 
@@ -71,8 +76,6 @@ project-root/
 ├── README.md             # Project documentation
 └── requirements.txt      # Python dependencies
 ```
-
----
 
 ## 5. Sneak Peek
 
@@ -95,8 +98,6 @@ project-root/
 <summary>Screenshot 4: Successful scraping</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 26 38" src="https://github.com/user-attachments/assets/b331b1bd-1aaf-463d-bd24-82f9ee3fd0fb" />
 </details>
-
----
 
 ## 6. Contact
 
