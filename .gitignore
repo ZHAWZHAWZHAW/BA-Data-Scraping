@@ -1,1 +1,2 @@
-/data/jobs.csv 
+/data/*
+!/data/.gitkeep
