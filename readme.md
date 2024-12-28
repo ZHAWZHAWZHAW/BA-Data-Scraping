@@ -6,13 +6,12 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ## 📖 Table of Contents
 
-1. [Features](#1-features)
-2. [Prerequisites](#2-prerequisites)
-3. [Installation](#3-installation)
-4. [Running Locally](#4-running-locally)
-5. [Running with Docker](#5-running-with-docker)
-6. [Application Endpoints](#6-application-endpoints)
-7. [Folder Structure](#7-folder-structure)
+1. 🛠️ [Features](#1-features)
+2. 📋 [Prerequisites](#2-prerequisites)
+3. ⚙️ [Installation](#3-installation)
+4. 🐳 [Running with Docker](#4-running-with-docker)   
+5. 🌐 [Application Endpoints](#5-application-endpoints)
+6. 📂 [Folder Structure](#6-folder-structure)
 
 ---
 
@@ -38,7 +37,6 @@ This project is a Flask-based web application that scrapes job listings from a s
 1. Clone this repository:
    ```bash
    git clone https://github.com/ZHAWZHAWZHAW/BA-Data-Scraping.git
-   cd your-repo
    ```
 
 2. Install Python dependencies:
@@ -48,21 +46,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## ▶️ 4. Running Locally
-
-1. Start the Flask application:
-   ```bash
-   python app.py
-   ```
-
-2. Open your browser and navigate to:
-   ```
-   http://localhost:8080
-   ```
-
----
-
-## 🐳 5. Running with Docker
+## 🐳 4. Running with Docker
 
 1. Build the Docker image:
    ```bash
@@ -79,9 +63,20 @@ This project is a Flask-based web application that scrapes job listings from a s
    http://localhost:8080
    ```
 
+   ### ▶️ 4.1 Running Locally
+
+   1. Start the Flask application:
+      ```bash
+      python app.py
+      ```
+
+   2. Open your browser and navigate to:
+      ```
+      http://localhost:8080
+
 ---
 
-## 🌐 6. Application Endpoints
+## 🌐 5. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
@@ -95,7 +90,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 📂 7. Folder Structure
+## 📂 6. Folder Structure
 
 ```
 project-root/
