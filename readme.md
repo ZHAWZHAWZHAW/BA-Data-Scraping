@@ -19,8 +19,8 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 🛠️
-### 1. Features
+## 🛠️ Features
+### 1)
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
 - Saves scraped job data into CSV files
