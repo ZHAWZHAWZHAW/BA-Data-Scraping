@@ -115,22 +115,31 @@ project-root/
 
 ## 7. 📸 Sneak Peek
 
-### Screenshot 1: Overview Page
+## 7. 📸 Sneak Peek
+
+<details>
+<summary>Screenshot 1: Overview Page</summary>
 <img width="1206" alt="Bildschirmfoto 2024-12-28 um 14 22 12" src="https://github.com/user-attachments/assets/82fbe379-1323-4cc4-b991-8de6d0a979f6" />
 _This screenshot shows the overview page where users can quickly browse job listings._
+</details>
 
-### Screenshot 2: Filter Functionality
+<details>
+<summary>Screenshot 2: Filter Functionality</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 39" src="https://github.com/user-attachments/assets/1d1a0ed0-101d-4a12-b611-9b9b8ec9cd45" />
 _Illustrates the filter functionality for refining job searches._
+</details>
 
-### Screenshot 3: Job Details Page
+<details>
+<summary>Screenshot 3: Job Details Page</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 22 45" src="https://github.com/user-attachments/assets/607d948f-fb16-491b-920b-c961d37d92c5" />
 _A detailed view of a specific job listing, including key requirements and benefits._
+</details>
 
-
-### Screenshot 4: Admin Panel
+<details>
+<summary>Screenshot 4: Admin Panel</summary>
 <img width="661" alt="Bildschirmfoto 2024-12-28 um 14 26 38" src="https://github.com/user-attachments/assets/b331b1bd-1aaf-463d-bd24-82f9ee3fd0fb" />
 _The admin panel allows for efficient management of listings and user data._
+</details>
 
 ---
 
