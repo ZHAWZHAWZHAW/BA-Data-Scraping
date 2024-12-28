@@ -4,6 +4,10 @@ This application is a preparatory task for my Bachelor's thesis (submission May 
 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into CSV files for further analysis.
 
+![Python](https://img.shields.io/badge/python-3.9%2B-blue) 
+![Docker](https://img.shields.io/badge/docker-supported-brightgreen) 
+
+
 ---
 
 ## 📖 Table of Contents
@@ -11,15 +15,16 @@ This project is a Flask-based web application that scrapes job listings from a s
 1. 🛠️ [Features](#1-features)
 2. 📋 [Prerequisites](#2-prerequisites)
 3. ⚙️ [Installation](#3-installation)
-4. 🐳 [Running with Docker](#4-running-with-docker)   
+4. 🐳 [Running with Docker](#4-running-with-docker)  
    4.1. 🔧 [Running Locally](#41-running-locally)
 5. 🌐 [Application Endpoints](#5-application-endpoints)
 6. 📂 [Folder Structure](#6-folder-structure)
-7. ✉️ [Contact](#7-contact)
+7. 📸 [Sneak Peek](#7-sneak-peek)
+8. ✉️ [Contact](#8-contact)
 
 ---
 
-## 🛠️ 1. Features
+## 1. Features
 
 - Scrapes job listings from [JobScout24](https://www.jobscout24.ch/)
 - Saves scraped job data into CSV files
@@ -29,14 +34,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 📋 2. Prerequisites
+## 2. Prerequisites
 
 - Python 3.9 or higher
 - Docker (if you want to run the application using Docker)
 
 ---
 
-## ⚙️ 3. Installation
+## 3. Installation
 
 1. Clone this repository:
    ```bash
@@ -50,7 +55,7 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 🐳 4. Running with Docker
+## 4. Running with Docker
 
 1. Build the Docker image:
    ```bash
@@ -65,9 +70,9 @@ This project is a Flask-based web application that scrapes job listings from a s
 3. Access the application in your browser:
    ```
    http://localhost:8080
+   ```
 
-
-### 🔧 4.1 Running Locally
+### 4.1 Running Locally
 
 1. Start the Flask application:
    ```bash
@@ -81,20 +86,17 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 ---
 
-## 🌐 5. Application Endpoints
+## 5. Application Endpoints
 
 - **Home Page:** `/`
   - Displays the main index page.
 
 - **Scrape Jobs:** `/scrape`
-  - Scrapes job data and saves it into a CSV file.
-
-- **List Files:** `/files`
-  - Returns a JSON list of all saved CSV files.
+  - Scrapes job data and saves it into a CSV file. 
 
 ---
 
-## 📂 6. Folder Structure
+## 6. Folder Structure
 
 ```
 project-root/
@@ -111,7 +113,14 @@ project-root/
 
 ---
 
-## ✉️ 7. Contact
+## 7. 📸 Sneak Peek
+
+![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
+_A snapshot of the job listings scraped and displayed via the web interface._
+
+---
+
+## 8. ✉️ Contact
 
 If you have any questions or need further assistance, feel free to contact me at:
 
