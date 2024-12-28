@@ -118,6 +118,21 @@ project-root/
 ![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
 _A snapshot of the job listings scraped and displayed via the web interface._
 
+![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
+_A snapshot of the job listings scraped and displayed via the web interface._
+
+![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
+_A snapshot of the job listings scraped and displayed via the web interface._
+
+![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
+
+<img width="661" alt="Bildschirmfoto 2024-12-28 um 14 26 38" src="https://github.com/user-attachments/assets/b331b1bd-1aaf-463d-bd24-82f9ee3fd0fb" />
+
+_A snapshot of the job listings scraped and displayed via the web interface._
+
+![App Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Placeholder)  
+_A snapshot of the job listings scraped and displayed via the web interface._
+
 ---
 
 ## 8. ✉️ Contact
