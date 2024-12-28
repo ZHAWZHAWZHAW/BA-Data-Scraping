@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 import os
 import time
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -133,6 +134,15 @@ def scrape():
     save_to_csv(jobs)
     return redirect(url_for("index"))
 
-# Entry point for running the Flask app
+# Flask route: Get jobs data as JSON
+@app.route("/jobs")
+def get_jobs():
+    csv_file = os.path.join(DATA_FOLDER, "jobs.csv")
+    if not os.path.exists(csv_file):
+        return jsonify({"error": "No jobs data found."}), 404
+
+    df = pd.read_csv(csv_file)
+    return df.to_json(orient="records")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
