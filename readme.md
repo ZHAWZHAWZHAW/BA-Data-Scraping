@@ -9,13 +9,13 @@ This project is a Flask-based web application that scrapes job listings from a s
 ## 📖 Table of Contents
 
 1. 🛠️ [Features](#1-features)
-2. [Prerequisites](#2-prerequisites)
-3. [Installation](#3-installation)
-4. [Running with Docker](#4-running-with-docker)  
-   4.1. [Running Locally](#41-running-locally)
-5. [Application Endpoints](#5-application-endpoints)
-6. [Folder Structure](#6-folder-structure)
-7. [Contact](#7-contact)
+2. 📋 [Prerequisites](#2-prerequisites)
+3. ⚙️ [Installation](#3-installation)
+4. 🐳 [Running with Docker](#4-running-with-docker)  
+   4.1. 🔧 [Running Locally](#41-running-locally)
+5. 🌐 [Application Endpoints](#5-application-endpoints)
+6. 📂 [Folder Structure](#6-folder-structure)
+7. ✉️ [Contact](#7-contact)
 
 ---
 
