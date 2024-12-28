@@ -2,6 +2,8 @@
 
 This project is a Flask-based web application that scrapes job listings from a specific website and provides an interface to view the scraped data. The application also saves the job data into CSV files for further analysis.
 
+---
+
 ## 1. Table of Contents
 
 1. [Features](#2-features)
@@ -11,7 +13,8 @@ This project is a Flask-based web application that scrapes job listings from a s
 5. [Running with Docker](#6-running-with-docker)
 6. [Application Endpoints](#7-application-endpoints)
 7. [Folder Structure](#8-folder-structure)
-8. [License](#9-license)
+
+---
 
 ## 2. Features
 
@@ -21,16 +24,20 @@ This project is a Flask-based web application that scrapes job listings from a s
 - Built with Flask and BeautifulSoup
 - Automatically removes duplicate entries in job data
 
+---
+
 ## 3. Prerequisites
 
 - Python 3.9 or higher
 - Docker (if you want to run the application using Docker)
 
+---
+
 ## 4. Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/ZHAWZHAWZHAW/BA-Data-Scraping.git
    cd your-repo
    ```
 
@@ -39,10 +46,7 @@ This project is a Flask-based web application that scrapes job listings from a s
    pip install -r requirements.txt
    ```
 
-3. Create the `data` directory:
-   ```bash
-   mkdir data
-   ```
+---
 
 ## 5. Running Locally
 
@@ -56,22 +60,26 @@ This project is a Flask-based web application that scrapes job listings from a s
    http://localhost:8080
    ```
 
+---
+
 ## 6. Running with Docker
 
 1. Build the Docker image:
    ```bash
-   docker build -t flask-job-scraper .
+   docker build -t job-scraper .
    ```
 
 2. Run the Docker container:
    ```bash
-   docker run -p 8080:8080 flask-job-scraper
+   docker run -p 8080:8080 job-scraper
    ```
 
 3. Access the application in your browser:
    ```
    http://localhost:8080
    ```
+
+---
 
 ## 7. Application Endpoints
 
@@ -83,6 +91,9 @@ This project is a Flask-based web application that scrapes job listings from a s
 
 - **List Files:** `/files`
   - Returns a JSON list of all saved CSV files.
+
+
+---
 
 ## 8. Folder Structure
 
