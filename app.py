@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 # Directory to store CSV file
 DATA_FOLDER = "data"
-os.makedirs(DATA_FOLDER, exist_ok=True)
+if not os.path.exists(DATA_FOLDER):
+    os.makedirs(DATA_FOLDER)
 
 # Base URL of the job site
 base_url = "https://www.jobscout24.ch/de/jobs/Data%20Science/?page={page}"
