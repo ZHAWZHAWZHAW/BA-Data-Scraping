@@ -11,9 +11,8 @@ This project is a Flask-based web application that scrapes job listings from a s
 1. 🛠️ [Features](#1-features)
 2. 📋 [Prerequisites](#2-prerequisites)
 3. ⚙️ [Installation](#3-installation)
-4. 🐳 [Running with Docker](#4-running-with-docker)
-
-   4.1. 🔧 [Running Locally](#41-running-locally)     
+4. 🐳 [Running with Docker](#4-running-with-docker)   
+   4.1. 🔧 [Running Locally](#41-running-locally)
 5. 🌐 [Application Endpoints](#5-application-endpoints)
 6. 📂 [Folder Structure](#6-folder-structure)
 7. ✉️ [Contact](#7-contact)
@@ -66,18 +65,19 @@ This project is a Flask-based web application that scrapes job listings from a s
 3. Access the application in your browser:
    ```
    http://localhost:8080
+
+
+### 🔧 4.1 Running Locally
+
+1. Start the Flask application:
+   ```bash
+   python app.py
    ```
 
-   ### 🔧 4.1 Running Locally
-
-   1. Start the Flask application:
-      ```bash
-      python app.py
-      ```
-
-   2. Open your browser and navigate to:
-      ```
-      http://localhost:8080
+2. Open your browser and navigate to:
+   ```
+   http://localhost:8080
+   ```
 
 ---
 
@@ -92,7 +92,6 @@ This project is a Flask-based web application that scrapes job listings from a s
 - **List Files:** `/files`
   - Returns a JSON list of all saved CSV files.
 
-
 ---
 
 ## 📂 6. Folder Structure
@@ -100,12 +99,14 @@ This project is a Flask-based web application that scrapes job listings from a s
 ```
 project-root/
 │
-├── app.py                # Main Flask application
-├── requirements.txt      # Python dependencies
-├── Dockerfile            # Docker configuration
 ├── data/                 # Folder to store scraped CSV files
 ├── templates/            # HTML templates for the web interface
-└── README.md             # Project documentation
+│   └── index.html
+├── .gitignore            # Git ignore file
+├── app.py                # Main Flask application
+├── Dockerfile            # Docker configuration
+├── README.md             # Project documentation
+└── requirements.txt      # Python dependencies
 ```
 
 ---
