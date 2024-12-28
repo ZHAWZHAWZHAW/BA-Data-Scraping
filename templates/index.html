@@ -93,13 +93,6 @@
         </div>
         <div id="status" class="status-message"></div>
 
-        <div class="file-list">
-            <h4>Available File:</h4>
-            <ul id="file-list">
-                <!-- File names will be dynamically loaded here -->
-            </ul>
-            <button id="refresh-files" class="btn btn-secondary btn-sm">Refresh File List</button>
-        </div>
     </div>
 
     <script>
@@ -107,21 +100,6 @@
             const progressBar = document.getElementById('progress-bar');
             progressBar.style.width = value + '%';
             progressBar.setAttribute('aria-valuenow', value);
-        }
-
-        function fetchFiles() {
-            fetch('/files')
-                .then(response => response.json())
-                .then(files => {
-                    const fileList = document.getElementById('file-list');
-                    fileList.innerHTML = '';
-                    files.forEach(file => {
-                        const li = document.createElement('li');
-                        li.textContent = file;
-                        fileList.appendChild(li);
-                    });
-                })
-                .catch(err => console.error('Error fetching files:', err));
         }
 
         document.getElementById('scrape-btn').addEventListener('click', function () {
@@ -134,9 +112,8 @@
             fetch('/scrape')
                 .then(response => {
                     if (response.ok) {
-                        status.textContent = "Jobs scraped successfully! Check the 'jobs.csv' file.";
+                        status.textContent = "Jobs scraped successfully! Check the 'jobs.csv' file in your data folder.";
                         updateProgressBar(100);
-                        fetchFiles(); // Refresh file list
                     } else {
                         status.textContent = "Error: Could not scrape jobs.";
                     }
@@ -148,11 +125,6 @@
                     loader.style.display = "none";
                 });
         });
-
-        document.getElementById('refresh-files').addEventListener('click', fetchFiles);
-
-        // Initial file list fetch
-        fetchFiles();
     </script>
 </body>
 </html> 
